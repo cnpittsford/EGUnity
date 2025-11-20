@@ -6,21 +6,25 @@ public class BombExplosion : MonoBehaviour
 {
     [Header("Exploding")]
     public BombMovement bombMovement;
-    public GameObject laser;
+    public BombBehavior bombBehavior;
+    public ParticleSystem explosion;
+    public SpriteRenderer spriteRenderer;
+    public bool played = false;
+    public bool stopLoop = false;
 
-    private float shotTimer;
+    private float exTimer;
 
     void Update() {
         if(bombMovement.stopped) {
-            shotTimer += Time.deltaTime;
-            if(shotTimer >= 2) {
-                GameObject shot = Instantiate(laser, gameObject.transform.position, transform.rotation);
-                shot.transform.Rotate(0, 0, 90);
-                SpriteRenderer renderer = shot.GetComponent<SpriteRenderer>();
-                renderer.sortingOrder = -5;
-                shot.tag = "CapsuleShot";
-                shot.SetActive(true);
-                shotTimer = 0;
+            exTimer += Time.deltaTime;
+            if(exTimer >= 1 && stopLoop == false)
+            {
+                bombMovement.enabled = false;
+                bombBehavior.enabled = false;
+                explosion.Play();
+                played = true;
+                spriteRenderer.enabled = false;
+                stopLoop = false;
             }
         }
     }

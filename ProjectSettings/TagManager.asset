@@ -11,6 +11,8 @@ TagManager:
   - Square
   - CapsuleShot
   - Shop
+  - Bomb
+  - Explode
   layers:
   - Default
   - TransparentFX

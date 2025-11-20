@@ -1600,16 +1600,16 @@ MonoBehaviour:
   circleMovement: {fileID: 2481683312365965920}
   capsuleMovement: {fileID: 4862060078937437980}
   bombMovement: {fileID: 3320934532269857686}
-  noTriangles: 0
-  noSquares: 0
+  noTriangles: 1
+  noSquares: 1
   squaresMinusFiveInterval: 0
   squareSpeedQuickIncrease: 0
-  noCircles: 0
+  noCircles: 1
   instantCircle: 0
-  noCapsules: 0
+  noCapsules: 1
   instantCapsule: 0
   noBombs: 0
-  instantBomb: 0
+  instantBomb: 1
 --- !u!1 &2038924027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,10 +1927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3243317226041128310, guid: 07a9ec44b1b638e4eafe222dffc9625f, type: 3}
-      propertyPath: laser
-      value: 
-      objectReference: {fileID: 1356037690}
+    - target: {fileID: 2969541195930082460, guid: 07a9ec44b1b638e4eafe222dffc9625f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4264211682528686680, guid: 07a9ec44b1b638e4eafe222dffc9625f, type: 3}
       propertyPath: m_Name
       value: Bomb
@@ -2029,6 +2029,10 @@ PrefabInstance:
       propertyPath: shootingManager
       value: 
       objectReference: {fileID: 1427921795}
+    - target: {fileID: 9090209134287635613, guid: d5cbe52b12af4d841804b2afc9a27ba4, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1356037690}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

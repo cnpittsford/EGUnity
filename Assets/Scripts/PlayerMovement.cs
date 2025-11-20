@@ -65,5 +65,9 @@ public class PlayerMovement : MonoBehaviour
         {
             livesManager.removeLives(1);
         }
+        if(other.gameObject.CompareTag("Explode"))
+        {
+            livesManager.removeLives(3);
+        }
     }
 }
