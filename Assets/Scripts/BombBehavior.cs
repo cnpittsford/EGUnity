@@ -42,6 +42,7 @@ public class BombBehavior : MonoBehaviour
                 played = true;
                 spriteRenderer.enabled = false;
                 activeParticle = true;
+                Invoke("removeBomb", 0.7f);
             }
         }
     }
@@ -57,10 +58,8 @@ public class BombBehavior : MonoBehaviour
         health -= damage;
     }
 
-    void OnParticleSystemStopped() {
-        if(activeParticle == true) {
-            activeParticle = false;
-            Destroy(gameObject);
-        }
+    public void removeBomb()
+    {
+        Destroy(gameObject);
     }
 }

@@ -25,7 +25,13 @@ public class BombExplosion : MonoBehaviour
                 played = true;
                 spriteRenderer.enabled = false;
                 stopLoop = false;
+                Invoke("removeBomb", 0.7f);
             }
         }
+    }
+
+    public void removeBomb()
+    {
+        Destroy(gameObject);
     }
 }
