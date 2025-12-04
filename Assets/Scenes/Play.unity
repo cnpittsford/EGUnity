@@ -1600,16 +1600,16 @@ MonoBehaviour:
   circleMovement: {fileID: 2481683312365965920}
   capsuleMovement: {fileID: 4862060078937437980}
   bombMovement: {fileID: 3320934532269857686}
-  noTriangles: 1
-  noSquares: 1
+  noTriangles: 0
+  noSquares: 0
   squaresMinusFiveInterval: 0
   squareSpeedQuickIncrease: 0
-  noCircles: 1
+  noCircles: 0
   instantCircle: 0
-  noCapsules: 1
+  noCapsules: 0
   instantCapsule: 0
   noBombs: 0
-  instantBomb: 1
+  instantBomb: 0
 --- !u!1 &2038924027
 GameObject:
   m_ObjectHideFlags: 0
