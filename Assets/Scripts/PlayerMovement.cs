@@ -69,5 +69,9 @@ public class PlayerMovement : MonoBehaviour
         {
             livesManager.removeLives(3);
         }
+        if(other.gameObject.CompareTag("Hexagon"))
+        {
+            livesManager.removeLives(2);
+        }
     }
 }

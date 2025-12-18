@@ -10,11 +10,13 @@ public class EnemyManager : MonoBehaviour
     public GameObject circle;
     public GameObject capsule;
     public GameObject bomb;
+    public GameObject hexagon;
     public float triangleSpeed = 2f;
     public float squareSpeed = 0.8f;
     public float circleSpeed = 3.1f;
     public float capsuleSpeed = 2f;
     public float bombSpeed = 2.5f;
+    public float hexagonSpeed = 3f;
 
     [Header("Player")]
     public GameObject player;
@@ -28,11 +30,13 @@ public class EnemyManager : MonoBehaviour
     public float circleSpawnInterval = 30f;
     public float capsuleSpawnInterval = 50f;
     public float bombSpawnInterval = 75f;
+    public float hexagonSpawnInterval = 100f;
     private float triangleTimer;
     private float squareTimer;
     private float circleTimer;
     private float capsuleTimer;
     private float bombTimer;
+    private float hexagonTimer;
 
     [Header("Bounds")]
     private Vector2 boundsMin = new Vector2(-10.62f, -4.97f);
@@ -53,17 +57,22 @@ public class EnemyManager : MonoBehaviour
     [Header("Bomb")]
     public BombMovement bombMovement;
 
+    [Header("Hexagon")]
+    public HexagonMovement hexagonMovement;
+
     [Header("Debug")]
     public bool noTriangles;
     public bool noSquares;
+    public bool noCircles;
+    public bool noCapsules;
+    public bool noBombs;
+    public bool noHexagons;
     public bool squaresMinusFiveInterval;
     public bool squareSpeedQuickIncrease;
-    public bool noCircles;
     public bool instantCircle;
-    public bool noCapsules;
     public bool instantCapsule;
-    public bool noBombs;
     public bool instantBomb;
+    public bool instantHexagon;
 
     void Start() {
         if(instantCircle) {
@@ -75,6 +84,10 @@ public class EnemyManager : MonoBehaviour
         if(instantBomb)
         {
             bombSpawnInterval = 2f;
+        }
+        if(instantHexagon)
+        {
+            hexagonSpawnInterval = 2f;
         }
     }
 
@@ -267,6 +280,39 @@ public class EnemyManager : MonoBehaviour
                     bombMovement.speed = bombSpeed;
                 }
                 bombTimer = 0f;
+            }
+        }
+
+        if (!noHexagons)
+        {
+            hexagonTimer += Time.deltaTime;
+            if (hexagonTimer >= hexagonSpawnInterval)
+            {
+                // Spawns enemy on a random side
+                int side = Random.Range(0, 4);
+                Vector2 spawnPos;
+
+                if (side == 0) // Top
+                    spawnPos = new Vector2(Random.Range(boundsMin.x, boundsMax.x), boundsMax.y + unitsOutOfBounds);
+                else if (side == 1) // Bottom
+                    spawnPos = new Vector2(Random.Range(boundsMin.x, boundsMax.x), boundsMin.y - unitsOutOfBounds);
+                else if (side == 2) // Left
+                    spawnPos = new Vector2(boundsMin.x - unitsOutOfBounds, Random.Range(boundsMin.y, boundsMax.y));
+                else // Right
+                    spawnPos = new Vector2(boundsMax.x + unitsOutOfBounds, Random.Range(boundsMin.y, boundsMax.y));
+
+                GameObject cloneHexagon = Instantiate(hexagon, spawnPos, Quaternion.identity);
+                cloneHexagon.tag = "Hexagon";
+                cloneHexagon.SetActive(true);
+
+                if (hexagonSpawnInterval == 100f)
+                {
+                    hexagonSpawnInterval = 60f;
+                } else if(hexagonSpawnInterval > 40f) {
+                    hexagonSpawnInterval -= 0.5f;
+                }
+                
+                hexagonTimer = 0f;
             }
         }
     }

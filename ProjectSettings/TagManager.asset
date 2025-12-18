@@ -13,6 +13,7 @@ TagManager:
   - Shop
   - Bomb
   - Explode
+  - Hexagon
   layers:
   - Default
   - TransparentFX

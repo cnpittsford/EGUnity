@@ -9,6 +9,7 @@ public class BombExplosion : MonoBehaviour
     public BombBehavior bombBehavior;
     public ParticleSystem explosion;
     public SpriteRenderer spriteRenderer;
+    public CircleCollider2D explosionCollider;
     public bool played = false;
     public bool stopLoop = false;
 
@@ -21,10 +22,11 @@ public class BombExplosion : MonoBehaviour
             {
                 bombMovement.enabled = false;
                 bombBehavior.enabled = false;
+                explosionCollider.enabled = true;
                 explosion.Play();
                 played = true;
                 spriteRenderer.enabled = false;
-                stopLoop = false;
+                stopLoop = true;
                 Invoke("removeBomb", 0.7f);
             }
         }
