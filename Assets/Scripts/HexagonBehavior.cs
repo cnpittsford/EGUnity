@@ -48,18 +48,13 @@ public class HexagonBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Shooting") {
+        if(other.gameObject.CompareTag("Shooting")) {
             dealDamage(shootingManager.damage);
             Destroy(other.gameObject);
         }
-        if(other.gameObject.tag == "InnerCollider")
-        {
-            stopped = true;
-        } else
-        {
-            stopped = false;
-        }
+        // stopped in HexagonMovement.cs
     }
+
     public void dealDamage(float damage) {
         health -= damage;
     }
