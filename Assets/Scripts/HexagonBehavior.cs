@@ -9,7 +9,6 @@ public class HexagonBehavior : MonoBehaviour
     private bool active = false;
     public float health;
     public HexagonMovement hexagonMovement;
-    public bool stopped = false;
 
     [Header("Damage")]
     public ShootingManager shootingManager;
@@ -31,7 +30,7 @@ public class HexagonBehavior : MonoBehaviour
 
     void Update()
     {
-        if(active && player != null && !stopped) {
+        if(active && player != null) {
             if (transform.position.y < -9f || transform.position.y > 9f || transform.position.x < -15f || transform.position.x > 15f)
             {
                 Destroy(gameObject);
@@ -52,7 +51,6 @@ public class HexagonBehavior : MonoBehaviour
             dealDamage(shootingManager.damage);
             Destroy(other.gameObject);
         }
-        // stopped in HexagonMovement.cs
     }
 
     public void dealDamage(float damage) {
